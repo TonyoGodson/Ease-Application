@@ -51,3 +51,16 @@ If you’d like to contribute to Ease App, feel free to fork the repository and 
 
 ## License
 This project is licensed under the MIT License.
+
+---
+For any issues or feature requests, please create an issue on [GitHub](https://github.com/your-username/ease-app/issues).
+
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
