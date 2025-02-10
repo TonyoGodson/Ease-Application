@@ -152,23 +152,25 @@ class _PastBookingsItemState extends State<PastBookingsItem> {
                           widget.freeC??true ? Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.check,
-                                    size: 14,
-                                    color: ColorUtils.GREEN_COLOR,
-                                  ),
-                                  SizedBox(width: 5,),
-                                  Text(StringUtils.freeC,
-                                    style: nunitoSans(
-                                        c: ColorUtils.GREEN_COLOR,
-                                        context: context,
-                                        fs: 9,
-                                        ht: 1.0,
-                                        fw: FontWeight.w400
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.check,
+                                      size: 14,
+                                      color: ColorUtils.GREEN_COLOR,
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(width: 5,),
+                                    Text(StringUtils.freeC,
+                                      style: nunitoSans(
+                                          c: ColorUtils.GREEN_COLOR,
+                                          context: context,
+                                          fs: 9,
+                                          ht: 1.0,
+                                          fw: FontWeight.w400
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Text(widget.price,
                                 style: nunitoSans(
