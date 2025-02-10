@@ -67,222 +67,224 @@ class _LoginScreenState extends State<LoginScreen> {
         // resizeToAvoidBottomInset: true,
         backgroundColor: ColorUtils.TRANSPARENT_,
           // appBar: AppBar(),
-          body: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(StringUtils.welcome,
-                  style: nunitoSans(
-                    context: context,
-                    fs: 18,
-                    ht: 2.0,
-                    fw: FontWeight.bold
+          body: SafeArea(
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(StringUtils.welcome,
+                    style: nunitoSans(
+                      context: context,
+                      fs: 18,
+                      ht: 2.0,
+                      fw: FontWeight.bold
+                    ),
                   ),
-                ),
-                Text(StringUtils.book,
-                  style: nunitoSans(
-                    context: context,
-                    fs: 14,
-                    ht: 2.0,
-                    fw: FontWeight.normal
+                  Text(StringUtils.book,
+                    style: nunitoSans(
+                      context: context,
+                      fs: 14,
+                      ht: 2.0,
+                      fw: FontWeight.normal
+                    ),
                   ),
-                ),
-                SizedBox(height: 40,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(StringUtils.email,
-                      style: nunitoSans(
-                          context: context,
-                          fs: 14,
-                          ht: 2.0,
-                          fw: FontWeight.w300
+                  SizedBox(height: 40,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(StringUtils.email,
+                        style: nunitoSans(
+                            context: context,
+                            fs: 14,
+                            ht: 2.0,
+                            fw: FontWeight.w300
+                        ),
                       ),
                     ),
                   ),
-                ),
-                CustomReusableTextField(
-                  controller: _emailController,
-                  focusNode: _emailFocusNode,
-                  label: "user@email.com",
-                  hint: "user@email.com",
-                  leftMargin: 18,
-                  rightMargin: 18,
-                  borderRadius: 10,
-                  maxLength: 45,
-                  fontSize: 15,
-                  borderColor: ColorUtils.TRANSPARENT_,
-                  filled: true,
-                  fillColor: ColorUtils.WHITE_COLOR,
-                  keyboardType: TextInputType.emailAddress,
-                  onFieldSubmitted: (value){
-                    onChangeFocusNode(context, _emailFocusNode, _passwordFocusNode);
-                  },
-                  validator: (value) => emailValidator(value),
-                  onChange: (value){
-                    setState(() {
-                      emailValidator(value);
-                    });
-                  },
-                ),
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(StringUtils.password,
-                      style: nunitoSans(
-                          context: context,
-                          fs: 14,
-                          ht: 2.0,
-                          fw: FontWeight.w300
+                  CustomReusableTextField(
+                    controller: _emailController,
+                    focusNode: _emailFocusNode,
+                    label: "user@email.com",
+                    hint: "user@email.com",
+                    leftMargin: 18,
+                    rightMargin: 18,
+                    borderRadius: 10,
+                    maxLength: 45,
+                    fontSize: 15,
+                    borderColor: ColorUtils.TRANSPARENT_,
+                    filled: true,
+                    fillColor: ColorUtils.WHITE_COLOR,
+                    keyboardType: TextInputType.emailAddress,
+                    onFieldSubmitted: (value){
+                      onChangeFocusNode(context, _emailFocusNode, _passwordFocusNode);
+                    },
+                    validator: (value) => emailValidator(value),
+                    onChange: (value){
+                      setState(() {
+                        emailValidator(value);
+                      });
+                    },
+                  ),
+                  SizedBox(height: 10,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(StringUtils.password,
+                        style: nunitoSans(
+                            context: context,
+                            fs: 14,
+                            ht: 2.0,
+                            fw: FontWeight.w300
+                        ),
                       ),
                     ),
                   ),
-                ),
-                // SizedBox(height: 20,),
-                ValueListenableBuilder(
-                    valueListenable: _hidePassword,
-                    builder: (context, value, child){
-                  return
-                    CustomReusableTextField(
-                      focusNode: _passwordFocusNode,
-                      controller: _passwordController,
-                      label: "Password",
-                      hint: "Password",
-                      leftMargin: 18,
-                      rightMargin: 18,
-                      maxLength: 45,
-                      fontSize: 15,
-                      borderRadius: 10,
-                      borderColor: ColorUtils.TRANSPARENT_,
-                      filled: true,
-                      fillColor: ColorUtils.WHITE_COLOR,
-                      passwordField: _hidePassword.value,
-                      prefIcon: Icon(Icons.lock,
-                        size: 16,
-                      ),
-                      sufIcon: SizedBox(
-                        width: 10,
-                        child: IconButton(
-                            onPressed: (){
-                            _hidePassword.value = !_hidePassword.value;
-                          }, icon: Icon(_hidePassword.value ? Icons.visibility:Icons.visibility_off,
+                  // SizedBox(height: 20,),
+                  ValueListenableBuilder(
+                      valueListenable: _hidePassword,
+                      builder: (context, value, child){
+                    return
+                      CustomReusableTextField(
+                        focusNode: _passwordFocusNode,
+                        controller: _passwordController,
+                        label: "Password",
+                        hint: "Password",
+                        leftMargin: 18,
+                        rightMargin: 18,
+                        maxLength: 45,
+                        fontSize: 15,
+                        borderRadius: 10,
+                        borderColor: ColorUtils.TRANSPARENT_,
+                        filled: true,
+                        fillColor: ColorUtils.WHITE_COLOR,
+                        passwordField: _hidePassword.value,
+                        prefIcon: Icon(Icons.lock,
                           size: 16,
-                        )),
-                      ),
-                      onFieldSubmitted: (value){
-                        onChangeFocusNode(context, _passwordFocusNode, _submitFocusNode);
-                      },
-                      // validator: (value) => passwordValidator(value),
-                      onChange: (value) => passwordValidator(value),
-                    );
-                }),
-                // SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child:
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: RememberMeCheckbox()
-                        // Row(
-                        //   children: [
-                        //     Text(StringUtils.rememberme,
-                        //       style: nunitoSans(
-                        //           context: context,
-                        //           fs: 12
-                        //       ),
-                        //     ),
-                        //     ReusableCheckBox(
-                        //       circle: false,
-                        //       borderRadius: 4,
-                        //       checked: context.read<AuthViewModel>().rememberMe??false,
-                        //       borderUncheckColor: ColorUtils.EASE_BLUE,
-                        //       backgroundColor: ColorUtils.EASE_BLUE,
-                        //     )
-                        //   ],
-                        // ),
-                      ),
-                      SizedBox(
-                        height: 25,
-                        width: 140,
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          style: IconButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(3.5)
-                            )
+                        ),
+                        sufIcon: SizedBox(
+                          width: 10,
+                          child: IconButton(
+                              onPressed: (){
+                              _hidePassword.value = !_hidePassword.value;
+                            }, icon: Icon(_hidePassword.value ? Icons.visibility:Icons.visibility_off,
+                            size: 16,
+                          )),
+                        ),
+                        onFieldSubmitted: (value){
+                          onChangeFocusNode(context, _passwordFocusNode, _submitFocusNode);
+                        },
+                        // validator: (value) => passwordValidator(value),
+                        onChange: (value) => passwordValidator(value),
+                      );
+                  }),
+                  // SizedBox(height: 10,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: RememberMeCheckbox()
+                          // Row(
+                          //   children: [
+                          //     Text(StringUtils.rememberme,
+                          //       style: nunitoSans(
+                          //           context: context,
+                          //           fs: 12
+                          //       ),
+                          //     ),
+                          //     ReusableCheckBox(
+                          //       circle: false,
+                          //       borderRadius: 4,
+                          //       checked: context.read<AuthViewModel>().rememberMe??false,
+                          //       borderUncheckColor: ColorUtils.EASE_BLUE,
+                          //       backgroundColor: ColorUtils.EASE_BLUE,
+                          //     )
+                          //   ],
+                          // ),
+                        ),
+                        SizedBox(
+                          height: 25,
+                          width: 140,
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            style: IconButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(3.5)
+                              )
+                            ),
+                            onPressed: (){
+                              Navigator.of(context).pushNamed(ForgotPasswordScreen.routeName);
+                            },
+                            icon: Text(StringUtils.fpassword,
+                              style: nunitoSans(
+                                context: context,
+                                fs: 12
+                              ),
+                            ),
                           ),
-                          onPressed: (){
-                            Navigator.of(context).pushNamed(ForgotPasswordScreen.routeName);
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 30,),
+                  CustomReusableButton(
+                      buttonTitle: "Log in",
+                      titleColor: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      buttonColor: ColorUtils.EASE_BLUE,
+                      buttonHeight: 45,
+                      left: 18, right: 18,
+                      borderRadius: 10,
+                      function: (){
+                        _submit(context);
+                      }),
+                  SizedBox(height: 30,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(StringUtils.donthave,
+                        style: nunitoSans(
+                          context: context,
+                          fs: 13,
+                          fw: FontWeight.w300
+                        ),
+                      ),
+                      SizedBox(width: 5,),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              width: 2.0,
+                              color: ColorUtils.EASE_BLUE
+                            )
+                          )
+                        ),
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.of(context).pushNamed(SignUpScreen.routeName);
                           },
-                          icon: Text(StringUtils.fpassword,
+                          child: Text(StringUtils.signup,
                             style: nunitoSans(
+                              c: ColorUtils.EASE_BLUE,
                               context: context,
-                              fs: 12
+                              fs: 14,
+                              fw: FontWeight.bold
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                ),
-                SizedBox(height: 30,),
-                CustomReusableButton(
-                    buttonTitle: "Log in",
-                    titleColor: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    buttonColor: ColorUtils.EASE_BLUE,
-                    buttonHeight: 45,
-                    left: 18, right: 18,
-                    borderRadius: 10,
-                    function: (){
-                      _submit(context);
-                    }),
-                SizedBox(height: 30,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(StringUtils.donthave,
-                      style: nunitoSans(
-                        context: context,
-                        fs: 13,
-                        fw: FontWeight.w300
-                      ),
-                    ),
-                    SizedBox(width: 5,),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            width: 2.0,
-                            color: ColorUtils.EASE_BLUE
-                          )
-                        )
-                      ),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.of(context).pushNamed(SignUpScreen.routeName);
-                        },
-                        child: Text(StringUtils.signup,
-                          style: nunitoSans(
-                            c: ColorUtils.EASE_BLUE,
-                            context: context,
-                            fs: 14,
-                            fw: FontWeight.bold
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SocialBtns()
-              ],
+                  SocialBtns()
+                ],
+              ),
             ),
           ),
         ),
